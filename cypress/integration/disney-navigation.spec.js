@@ -1,7 +1,3 @@
-/* ./node_modules/.bin/cypress 
-run --record --key 07876ea4-c61a-44fd-b578-ff4e383465f3
-*/
-
 context("Navigation", () => {
   beforeEach(() => {
     // Disney Movie Insiders homepage
