@@ -1,3 +1,5 @@
 {
-  "projectId": "8frjna"
+  "projectId": "8frjna",
+
+  "chromeWebSecurity": false
 }
