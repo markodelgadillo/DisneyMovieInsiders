@@ -45,7 +45,7 @@ context("The Sign Up form modal", () => {
       .eq(1) // finds the last name input field
       .click() // clicks away from the cleared input field
       .get(this.iFrame)
-      .find(".main .container .ng-scope")
+      .find(".main .field-group .field-first-name .ng-scope")
       .contains("Please enter your first name.")
       .should("exist") // verifies the error message is displayed
       .log("The first name error message is verified!");
@@ -66,8 +66,53 @@ context("The Sign Up form modal", () => {
       .log("The first name error UI (input field red border) is verified");
   });
 
-  //   it("verifies the last name input field of the sign up modal form", () => {
-  //   });
+  it("verifies the last name input field of the sign up modal form", function () {
+    cy.get(this.iFrame)
+      .find(".main input") // looks for the element with the class
+      .eq(1)
+      .as("lNameInput") // gets the second instance of the class
+      .should("have.attr", "type", "text") // type of input
+      .should("not.be.disabled") // enabled/disabled check
+      .should("have.attr", "placeholder", "Last Name") // value
+      .should("have.attr", "required", "required") // input required
+      .log(
+        "Verified the attribute, enabled/disabled, required and input validity."
+      );
+
+    cy.get(this.iFrame)
+      .get("@lNameInput")
+      .type("Delgadillo")
+      .should("have.class", "ng-valid") // verifies valid characters
+      .find(".container .ng-scope")
+      .should("not.exist") // verifies the error message is NOT displayed
+      .get("@lNameInput")
+      .clear()
+      .should("have.class", "ng-invalid") // verifies invalid/no characters
+      .get(this.iFrame)
+      .find(".main input")
+      .eq(0) // finds the first name input field
+      .click() // clicks away from the cleared input field
+      .get(this.iFrame)
+      .find(".main .field-group .field-last-name .ng-scope")
+      .contains("Please enter your last name.")
+      .should("exist") // verifies the error message is displayed
+      .log("The last name error message is verified!");
+
+    cy.get(this.iFrame)
+      .find(".main .field-last-name")
+      .should("have.class", "field-error") // verifies the error class IS present
+      .get(this.iFrame)
+      .find(".main input")
+      .eq(1)
+      .type("Test")
+      .get(this.iFrame)
+      .find(".main .field-last-name")
+      .should("not.have.class", "field-error") // verifies the error class is not present
+      .get(this.iFrame)
+      .find(".wrapper button#close")
+      .click()
+      .log("The last name error UI (input field red border) is verified");
+  });
 
   //   it("verifies the email address input field of the sign up modal form", () => {});
 
