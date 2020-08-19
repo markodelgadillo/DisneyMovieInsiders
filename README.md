@@ -6,6 +6,6 @@ The "cypress/integration" directory contains the test case files for the Disney 
 The first test run was to verify the elements within the navigation bar.
 The latest run includes testing of the input fields for the Sign Up form.
 
-Results of [latest] run.(https://dashboard.cypress.io/projects/8frjna/runs/2)
+Results of [latest](https://dashboard.cypress.io/projects/8frjna/runs/2) run.
 
 ![](cypress/videos/disney-sign-up-form.spec.js.gif)
