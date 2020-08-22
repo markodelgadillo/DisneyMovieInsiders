@@ -23,3 +23,35 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+const COMMAND_DELAY = 500;
+
+for (const command of [
+  "visit",
+  "click",
+  "trigger",
+  "type",
+  "clear",
+  "reload",
+  "contains",
+]) {
+  Cypress.Commands.overwrite(command, (originalFn, ...args) => {
+    const origVal = originalFn(...args);
+
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(origVal);
+      }, COMMAND_DELAY);
+    });
+  });
+}
+
+Cypress.Commands.add("getIframeBody", () => {
+  cy.log("getIframeBody");
+
+  return cy
+    .get("#disneyid-iframe", { log: false })
+    .its("0.contentDocument.body", { log: false })
+    .should("not.be.empty")
+    .then((body) => cy.wrap(body, { log: false }));
+});

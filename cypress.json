@@ -1,5 +1,13 @@
 {
   "projectId": "8frjna",
 
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+
+  "retries": {
+    "runMode": 1,
+
+    "openMode": 3
+  },
+
+  "baseUrl": "https://www.disneymovieinsiders.com/"
 }
