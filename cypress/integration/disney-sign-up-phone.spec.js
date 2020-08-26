@@ -5,7 +5,6 @@ context("The Sign Up form modal", () => {
   });
 
   it("verifies the mobile phone input field of the sign up modal form", function () {
-    /* Verify the mobile phone input field dom element */
     cy.getIframeBody()
       .find(".main .field-phone input")
       .should("have.id", "phoneid-MOBILE")
@@ -43,31 +42,22 @@ context("The Sign Up form modal", () => {
   });
 
   it.only("Verify the UI changes for an error", () => {
-    cy.getIframeBody(".main .field-phone input").as("phoneInput");
     cy.getIframeBody()
-      .find(".main .field-phone")
-      .as("phoneField")
-      .should("not.have.class", "field-error")
+      .find(".main .field-phone input")
+      .as("phoneInput")
+      .click()
+      .should("have.class", "ng-valid")
+      .find(".container .ng-scope")
+      .should("not.exist")
       .get("@phoneInput")
-      .invoke(
-        "attr",
-        "class",
-        ".ng-pristine .ng-valid .ng-isolate-scope .ng-valid-i-n-v-a-l-i-d_-v-a-l-u-e.ng-valid-m-i-s-s-i-n-g_-v-a-l-u-e .ng-touched .pull-right .focused"
-      )
-      // .getIframeBody()
-      // .find(".main .country-code")
-      // .invoke("attr", "class", ".country-code.show")
-      // .click({ force: true })
-      // .get("@phoneInput")
-      .type("1234")
-      // .getIframeBody()
-      // .find(".main .field-email input")
-      // .click()
-      // .get("@phoneField")
-      // .should("have.class", "field-error")
-      // .getIframeBody()
-      // .find(".wrapper button#close")
-      // .click()
+      .type("123")
+      .should("have.class", "ng-invalid")
+      .getIframeBody()
+      .find(".main .field-email input")
+      .click()
+      .getIframeBody()
+      .find(".field-phone")
+      .should("have.class", "field-error")
       .log("The mobile phone UI (input field red border) is verified");
   });
 });
