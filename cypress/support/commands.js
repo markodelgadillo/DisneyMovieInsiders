@@ -55,3 +55,9 @@ Cypress.Commands.add("getIframeBody", () => {
     .should("not.be.empty")
     .then((body) => cy.wrap(body, { log: false }));
 });
+
+Cypress.Commands.add("clickSignUp", () => {
+  cy.log("clickSignUp");
+
+  return cy.get('[data-test-id="dmi-signup-button"]').click();
+});

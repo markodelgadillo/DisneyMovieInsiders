@@ -1,7 +1,7 @@
 context("The Sign Up form modal", () => {
   beforeEach(() => {
     cy.visit("");
-    cy.get('[data-test-id="dmi-signup-button"]').click();
+    cy.clickSignUp();
   });
 
   it("verifies the first name input field of the sign up modal form", () => {
@@ -14,9 +14,6 @@ context("The Sign Up form modal", () => {
       .should("not.be.disabled") // enabled/disabled check
       .should("have.attr", "placeholder", "First Name") // value
       .should("have.attr", "required", "required")
-      .getIframeBody()
-      .find(".wrapper button#close")
-      .click() // input required
       .log(
         "Verified the attribute, enabled/disabled, required and input validity."
       );
@@ -48,9 +45,6 @@ context("The Sign Up form modal", () => {
       .find(".main .field-group .field-first-name .ng-scope")
       .contains("Please enter your first name.")
       .should("exist")
-      //   .getIframeBody()
-      //   .find(".wrapper button#close")
-      //   .click() // verifies the error message is displayed
       .log("The first name error message is verified!");
   });
 
@@ -70,9 +64,6 @@ context("The Sign Up form modal", () => {
       .click()
       .get("@fNameField")
       .should("have.class", "field-error")
-      .getIframeBody()
-      .find(".wrapper button#close")
-      .click()
       .log("The first name error UI (input field red border) is verified");
   });
 });

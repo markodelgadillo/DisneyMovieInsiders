@@ -1,7 +1,7 @@
 context("The Sign Up form modal", () => {
   beforeEach(() => {
     cy.visit("");
-    cy.get('[data-test-id="dmi-signup-button"]').click();
+    cy.clickSignUp();
   });
 
   it("verifies the mobile phone input field of the sign up modal form", function () {
@@ -14,7 +14,7 @@ context("The Sign Up form modal", () => {
       .log("Verified the attribute, enabled/disabled and input validity.");
   });
 
-  it("Verify the mobile phone input field error messages", () => {
+  it("Verify the mobile phone input fdeield error messages", () => {
     cy.getIframeBody()
       .find(".main .field-phone input")
       .as("phoneInput")
