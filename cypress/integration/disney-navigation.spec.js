@@ -1,7 +1,7 @@
 context("Navigation", () => {
   beforeEach(() => {
     // Disney Movie Insiders homepage
-    cy.visit("https://www.disneymovieinsiders.com/");
+    cy.visit("");
   });
 
   // test suite for the Sign Up button
