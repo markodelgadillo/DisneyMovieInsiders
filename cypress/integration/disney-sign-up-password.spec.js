@@ -12,7 +12,7 @@ context("The Sign Up form modal", () => {
       .log("Verified the attribute, enabled/disabled and input validity.");
   });
 
-  it.only("verifies the 'Show Password' checkbox of the sign up modal form", () => {
+  it("verifies the 'Show Password' checkbox of the sign up modal form", () => {
     cy.getIframeBody()
       .find(".main .show-password-action input")
       .should("have.attr", "aria-checked", "false")
@@ -27,15 +27,49 @@ context("The Sign Up form modal", () => {
       .should("have.attr", "aria-checked", "false");
   });
 
-  it("verifies the password input field error UI", () => {});
+  it("verifies the password input field error UI", () => {
+    cy.getIframeBody()
+      .find(".main .field-new-password input")
+      .click()
+      .getIframeBody()
+      .find(".main .field-email input")
+      .click()
+      .getIframeBody()
+      .find(".main .field-new-password")
+      .should("have.class", "field-error");
+  });
 
-  it('verifies the password input field "Please enter a password." error message', () => {});
+  it('verifies the password input field "Please enter a password." error message', () => {
+    cy.getIframeBody()
+      .find(".main .field-new-password input")
+      .click()
+      .getIframeBody()
+      .find(".main .field-email input")
+      .click()
+      .getIframeBody()
+      .find(".main .field-new-password div.container .ng-scope")
+      .contains("Please enter a password.")
+      .should("exist");
+  });
 
   it('verifies the password input field "The password is too short." error message', () => {});
 
   it('verifies the password input field "The password is too easily guessed." error message', () => {});
 
-  it("verifies the password input field minimum requirements", () => {});
+  it.only("verifies the password input field minimum requirements", () => {
+    cy.getIframeBody()
+      .find(".main .field-new-password input")
+      .click()
+      .getIframeBody()
+      .find(".main .field-email input")
+      .click()
+      // not finding the class even though the stack trace shows
+      // the element has the class
+      .getIframeBody()
+      .find(".main .field-new-password")
+      .click()
+      .should("have.class", ".show-rules");
+  });
 
   it('verifies using a single type of character only as "Weak"', () => {});
 
