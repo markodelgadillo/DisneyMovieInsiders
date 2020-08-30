@@ -63,12 +63,10 @@ context("The Sign Up form modal", () => {
       .getIframeBody()
       .find(".main .field-email input")
       .click()
-      // not finding the class even though the stack trace shows
-      // the element has the class
       .getIframeBody()
       .find(".main .field-new-password")
       .click()
-      .should("have.class", ".show-rules");
+      .should("have.class", "show-rules");
   });
 
   it('verifies using a single type of character only as "Weak"', () => {});
