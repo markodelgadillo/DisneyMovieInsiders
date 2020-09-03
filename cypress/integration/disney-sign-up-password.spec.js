@@ -52,11 +52,23 @@ context("The Sign Up form modal", () => {
       .should("exist");
   });
 
-  it('verifies the password input field "The password is too short." error message', () => {});
+  it.only('verifies the password input field "The password is too short." error message', () => {
+    cy.getIframeBody()
+      .find(".main .field-new-password input")
+      .click()
+      .type("123")
+      .getIframeBody()
+      .find(".main .field-email input")
+      .click()
+      .getIframeBody()
+      .find(".main .field-new-password div.container .ng-scope")
+      .contains("The password is too short.")
+      .should("exist");
+  });
 
   it('verifies the password input field "The password is too easily guessed." error message', () => {});
 
-  it.only("verifies the password input field minimum requirements", () => {
+  it("verifies the password input field minimum requirements", () => {
     cy.getIframeBody()
       .find(".main .field-new-password input")
       .click()

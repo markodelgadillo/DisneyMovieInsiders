@@ -1,0 +1,22 @@
+{
+  "name": "disneymovieinsiders",
+  "version": "1.0.0",
+  "description": "Cypress.io automation testing for DisneyMovieInsiders.com homepage.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markodelgadillo/DisneyMovieInsiders.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markodelgadillo/DisneyMovieInsiders/issues"
+  },
+  "homepage": "https://github.com/markodelgadillo/DisneyMovieInsiders#readme",
+  "devDependencies": {
+    "cypress": "^5.1.0"
+  }
+}
