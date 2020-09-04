@@ -1,7 +1,7 @@
 context("The Sign Up form modal", () => {
   beforeEach(() => {
     cy.visit("");
-    cy.get('[data-test-id="dmi-signup-button"]').click();
+    cy.clickSignUp();
   });
 
   it("verifies the last name input field of the sign up modal form", () => {

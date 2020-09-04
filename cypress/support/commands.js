@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-const COMMAND_DELAY = 500;
+const COMMAND_DELAY = 1000;
 
 for (const command of [
   "visit",
@@ -54,4 +54,10 @@ Cypress.Commands.add("getIframeBody", () => {
     .its("0.contentDocument.body", { log: false })
     .should("not.be.empty")
     .then((body) => cy.wrap(body, { log: false }));
+});
+
+Cypress.Commands.add("clickSignUp", () => {
+  cy.log("clickSignUp");
+
+  return cy.get('[data-test-id="dmi-signup-button"]').click();
 });
