@@ -4,7 +4,9 @@
   "description": "Cypress.io automation testing for DisneyMovieInsiders.com homepage.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "my-server -p 3030",
+    "cy:run": "cypress run",
+    "test": "start-server-and-test start http://localhost:3030 cy:run"
   },
   "repository": {
     "type": "git",
