@@ -14,7 +14,7 @@ context("The Sign Up form modal", () => {
       .log("Verified the attribute, enabled/disabled and input validity.");
   });
 
-  it("Verify the mobile phone input fdeield error messages", () => {
+  it("Verify the mobile phone input field error messages", () => {
     cy.getIframeBody()
       .find(".main .field-phone input")
       .as("phoneInput")
