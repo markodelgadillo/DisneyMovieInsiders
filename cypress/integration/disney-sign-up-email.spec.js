@@ -49,7 +49,7 @@ context("The Sign Up form modal", () => {
       .log("The last name error message is verified!");
   });
 
-  it.only("Verify the UI changes for an error", () => {
+  it("Verify the UI changes for an error", () => {
     cy.getIframeBody()
       .find(".main .field-email input")
       .type("Test")
