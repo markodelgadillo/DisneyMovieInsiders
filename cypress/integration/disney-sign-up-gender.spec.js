@@ -62,7 +62,7 @@ context("The Sign Up form modal", () => {
       );
   });
 
-  it.only("can select/deselect Male of Female", () => {
+  it("can select/deselect Male of Female", () => {
     cy.getIframeBody()
       .getIframeBody()
       .find(".main .field-gender input")
