@@ -7,6 +7,3 @@ workflows:
     jobs:
       - cypress/run:
           record: true
-      - build:
-          post-steps:
-            - jira/notify
