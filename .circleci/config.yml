@@ -1,17 +1,12 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
+  jira: circleci/jira@1.2.2
 workflows:
   build:
     jobs:
       - cypress/run:
           record: true
-orbs:
-  jira: circleci/jira@1.2.2
-version: 2.1
-workflows:
-  build:
-    jobs:
       - build:
           post-steps:
             - jira/notify
