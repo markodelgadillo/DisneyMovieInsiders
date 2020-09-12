@@ -4,7 +4,7 @@ context("The Sign Up form modal Gender buttons", () => {
     cy.clickSignUp();
   });
 
-  it("are displayed witht the correct labels and disabled.", () => {
+  it("are displayed with the correct labels and disabled.", () => {
     cy.getIframeBody()
       .find(".main .field-gender span")
       .contains("Gender (Optional")
