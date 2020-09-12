@@ -1,10 +1,10 @@
-context("The Sign Up form modal", () => {
+context("The Sign Up form modal Gender buttons", () => {
   beforeEach(() => {
     cy.visit("");
     cy.clickSignUp();
   });
 
-  it("contains the Gender (Optional) selection buttons", () => {
+  it("are displayed witht the correct labels and disabled.", () => {
     cy.getIframeBody()
       .find(".main .field-gender span")
       .contains("Gender (Optional")
@@ -35,7 +35,7 @@ context("The Sign Up form modal", () => {
       );
   });
 
-  it("can select/deselect Male of Female", () => {
+  it("can be selected/deselected Male of Female.", () => {
     cy.getIframeBody()
       .getIframeBody()
       .find(".main .field-gender input")
@@ -62,7 +62,7 @@ context("The Sign Up form modal", () => {
       );
   });
 
-  it("can select/deselect Male of Female", () => {
+  it("will deselect one when the other is selected.", () => {
     cy.getIframeBody()
       .getIframeBody()
       .find(".main .field-gender input")
